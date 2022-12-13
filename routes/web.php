@@ -4,5 +4,4 @@
 
   Route::get('usuarios', [UserController::class, "show"]);
   Route::post('usuarios', [UserController::class, "store"]);
-  // Route::put('users/{id}', 'UserController@update');
-  // Route::delete('users/{id}', 'UserController@delete');
+  Route::put('usuarios', [UserController::class, "update"]);
