@@ -3,6 +3,7 @@
 
   use Illuminate\Http\Request;
   use Illuminate\Support\Facades\Http;
+  use App\Http\Requests\PostRequest;
 
   class UserController extends Controller {
     public function show(Request $request) {
@@ -46,5 +47,15 @@
         }
         return $usuarios;
       }
+    }
+
+    public function store(PostRequest $request) {
+      $response = Http::withToken('187daebae594b93debd257e9e117c0cac4c48690425d66f8ef2854f6f343c7f6')->post('https://gorest.co.in/public/v2/users', [
+        'name' => $request->nombre,
+        'email' => $request->email,
+        'gender' => $request->genero,
+        'status' => $request->activo,
+      ]);
+      return $response->json();
     }
   }
